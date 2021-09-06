@@ -5,6 +5,10 @@ import { AiOutlineCamera } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
 const Profile = () => {
   const [profiles, setProfiles] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const fetchProfiles = async () => {
     let response = await fetch(
@@ -41,7 +45,7 @@ const Profile = () => {
               />
              
             </div>
-            <div className="position-absolute d-felx flex-row-reverse camera">
+            <div className="position-absolute d-felx flex-row-reverse px-1 pb-1 camera">
               <AiOutlineCamera />
             </div>
             
@@ -55,7 +59,7 @@ const Profile = () => {
             </div>
             <div className="card-body pt-1">
               <div className="d-flex justify-content-end ">
-               <Button variant="outline">  <BiPencil /></Button>
+               <Button variant="outline" className="rounded"> <BiPencil /></Button>
               </div>
               <div className="row">
                 <div className="col-12 col-sm-12 col-md-8 col-lg-8 mb-2">
@@ -68,11 +72,16 @@ const Profile = () => {
                   <p className="card-text my-1">
                     <small>{profiles.bio}</small>
                   </p>
+                  <div className="mb-2">
+
                   <p className="card-text text-muted">
                     <small>{profiles.area}</small>
+                    <a href={profiles.email}>  Contact info</a>
                   </p>
+                  
+                  </div>
 
-                  <button className="btn btn-sm btn-primary btn-rectangle mr-2">
+                  <button className="btn btn-sm  btn-primary btn-rounded mr-2">
                     Open to
                   </button>
                   <button className="btn btn-sm btn-outline-info btn-rectangle mr-2">
