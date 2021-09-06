@@ -1,5 +1,18 @@
 .navbar {
-    padding: 0 24px !important;
+    padding: 0 !important;
+}
+
+.nav-wrapper {
+    padding: 0 !important;
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    min-height: 100%;
+    width: 1128px;
+}
+
+.nav {
+    padding-left: 80px;
 }
 
 .search {
@@ -68,4 +81,15 @@
 
 .work {
     color: #666666;
+}
+
+.premium {
+    text-align: center;
+    max-width: 100px;
+    word-wrap: break-word;
+    color: #915907;
+}
+
+.nav-link.prem:hover {
+    text-decoration: underline;
 }
