@@ -1,5 +1,5 @@
 import { Navbar, Nav, NavDropdown, Form, FormControl, InputGroup } from 'react-bootstrap'
-import { Linked, Hicon, Nicon, Jicon, Micon, Bicon, User } from '../assets/icons.jsx'
+import { Linked, Hicon, Nicon, Jicon, Micon, Bicon, User, Wicon } from '../assets/icons.jsx'
 import { FaSearch as Sicon } from 'react-icons/fa'
 import '../css/Nav.css'
 
@@ -27,6 +27,8 @@ const MyNav = () => {
                         <Nav.Link href="#link" className='link-dropdown'><Micon /><span className='text-dropdown'>Messaging</span></Nav.Link>
                         <Nav.Link href="#link" className='link-dropdown'><Bicon /><span className='text-dropdown'>Notifications</span></Nav.Link>
                         <User />
+                        <Nav.Link href="#link" className='link-dropdown'><Wicon /><span className='text-dropdown'>Work</span></Nav.Link>
+                        <Nav.Link href="#link" className='link-dropdown'><span className='text-dropdown'>Try Premium for free</span></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
         </Navbar>

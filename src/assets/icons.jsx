@@ -67,5 +67,13 @@ const User = () => {
     )
 }
 
+const Wicon = () => {
+    return (
+        <svg height="24" width="24">
+            <path fill='#666666' d="M10 10h4v4h-4v-4zm0 11h4v-4h-4v4zm-7-7h4v-4H3v4zm0 7h4v-4H3v4zM3 7h4V3H3v4zm14 7h4v-4h-4v4zm0-11v4h4V3h-4zm-7 4h4V3h-4v4zm7 14h4v-4h-4v4z"></path>
+        </svg>
+    )
+}
 
-export { Linked, Hicon, Nicon, Jicon, Micon, Bicon, User }
+
+export { Linked, Hicon, Nicon, Jicon, Micon, Bicon, User, Wicon }
