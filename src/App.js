@@ -3,20 +3,23 @@ import MyNav from "./components/MyNav.jsx";
 import "./App.css";
 import Profile from "./components/Profile.jsx";
 import AlsoViewed from "./components/AlsoViewed.jsx";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 function App() {
   return (
-    <>
+    <div className="main">
       <MyNav />
       <Container>
         <Row>
-          <Profile />
-          <AlsoViewed />
+          <Col sm={9}>
+            <Profile />
+          </Col>
+          <Col sm={3} className="mt-4">
+            <AlsoViewed />
+          </Col>
         </Row>
       </Container>
-      <div className="main"></div>
-    </>
+    </div>
   );
 }
 
