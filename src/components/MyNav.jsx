@@ -1,28 +1,36 @@
-import { Navbar, NavDropdown, Button, Form, FormControl } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, Form, FormControl, InputGroup } from 'react-bootstrap'
+import { Linked, Hicon, Nicon, Jicon, Micon, Bicon, User } from '../assets/icons.jsx'
+import { FaSearch as Sicon } from 'react-icons/fa'
+import '../css/Nav.css'
+
 
 const MyNav = () => {
     return (
+
         <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <MyNav className="mr-auto">
-                    <MyNav.Link href="#home">Home</MyNav.Link>
-                    <MyNav.Link href="#link">Link</MyNav.Link>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                    </NavDropdown>
-                </MyNav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-success">Search</Button>
-                </Form>
-            </Navbar.Collapse>
+                <Navbar.Brand href="#home"><Linked /></Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Form inline >
+                        <InputGroup>
+                            <InputGroup.Prepend>
+                                <InputGroup.Text className='search'><Sicon /></InputGroup.Text>
+                            </InputGroup.Prepend>
+                            <FormControl className='search' placeholder="Search" />
+                        </InputGroup>
+                    </Form>
+
+                    <Nav className="mr-auto">
+                        <Nav.Link href="#home" className='link-dropdown' ><Hicon /><span className='text-dropdown'>Home</span></Nav.Link>
+                        <Nav.Link href="#link" className='link-dropdown'><Nicon /><span className='text-dropdown'>My Network</span></Nav.Link>
+                        <Nav.Link href="#link" className='link-dropdown'><Jicon /><span className='text-dropdown'>Jobs</span></Nav.Link>
+                        <Nav.Link href="#link" className='link-dropdown'><Micon /><span className='text-dropdown'>Messaging</span></Nav.Link>
+                        <Nav.Link href="#link" className='link-dropdown'><Bicon /><span className='text-dropdown'>Notifications</span></Nav.Link>
+                        <User />
+                    </Nav>
+                </Navbar.Collapse>
         </Navbar>
+
     )
 }
 
