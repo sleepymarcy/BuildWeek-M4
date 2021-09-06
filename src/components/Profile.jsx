@@ -31,6 +31,7 @@ const Profile = () => {
         <Col sm={8} className="mx-auto">
           <div id="profile-top" className="card mb-3">
             <div className="card-img-top-div card-img-top-profile">
+           
               <img
                 className="card-img-top "
                 src={
@@ -38,10 +39,12 @@ const Profile = () => {
                 }
                 alt={profiles.name}
               />
+             
             </div>
-            <div className="position-absolute d-flex justify-content-end align-items-center ">
+            <div className="position-absolute d-felx flex-row-reverse camera">
               <AiOutlineCamera />
             </div>
+            
             <div className="card-pic ml-4">
               <img
                 className="rounded-circle"

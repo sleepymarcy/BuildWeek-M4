@@ -46,3 +46,10 @@
 .card .card-link {
     cursor: pointer;
 }
+.camera {
+    font-size: medium;
+    margin-left: 670px;
+    margin-top: 30px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+}
