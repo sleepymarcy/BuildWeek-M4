@@ -46,8 +46,8 @@
     }
     
     
-    # Day 2
-     Extra FE - D2 LinkedIn Part 2
+# Day 2
+Extra FE - D2 LinkedIn Part 2
 
     You'll be implementing the frontend of a LinkedIn-like application.
     Today you are gonna focus on the "experiences" in the profile page you started yesterday.
