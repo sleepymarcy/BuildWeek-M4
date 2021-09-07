@@ -29,9 +29,7 @@ const Profile = () => {
 
   return (
 
-    <Container className="my-5">
-      <Row>
-        <Col sm={8} className="mx-auto">
+    
           <div id="profile-top" className="card mb-3">
             <div className="card-img-top-div card-img-top-profile">
               <img
