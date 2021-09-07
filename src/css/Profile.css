@@ -1,55 +1,104 @@
+button {
+  border-radius: 50px !important;
+  padding: 0.2rem 0.95rem !important;
+}
 
 .card {
-    border-radius: 0px !important;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.125);
+  border-radius: 10px !important;
+  /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.125); */
 }
 .card.card-link {
-    box-shadow: none;
+  box-shadow: none;
 }
 .card .card-body {
-    transition: 0.3s;
+  transition: 0.3s;
 }
 .card .card-img-top-div {
-    max-height: 100px;
-    overflow: hidden;
-    z-index: 0;
-    position: relative;
+  border-radius: 5px 5px 0px 0px !important;
+  max-height: 100px;
+  overflow: hidden;
+  z-index: 0;
+  position: relative;
 }
 .card .card-img-top-div.card-img-top-profile {
-    max-height: 200px;
+  max-height: 200px;
 }
 .card .card-img-top-div:after {
-    content: '';
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 1;
-    width: 100%;
-    height: 100%;
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 .card .card-img-top-div .card-img-top {
-    top: -50px;
-    position: relative;
+  top: -50px;
+  position: relative;
 }
 .card .card-pic {
-    position: relative;
-    margin-top: -110px;
+  position: relative;
+  margin-top: -110px;
 }
 .card .card-pic .rounded-circle {
-    border: 2px solid #fff;
+  border: 2px solid #fff;
 }
 .card .card-user-details p {
-    line-height: 1;
+  line-height: 1;
 }
 .card .card-link {
-    cursor: pointer;
+  cursor: pointer;
 }
 .camera {
-    font-size: medium;
-    margin-left: 670px;
-    margin-top: 30px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 50%;
+  font-size: medium;
+  margin-left: 670px;
+  margin-top: 30px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+}
+
+.viewed p {
+  margin-bottom: 8px;
+}
+
+.viewed ul {
+  padding-inline-start: 0px;
+}
+
+.viewed ul a {
+  color: inherit;
+}
+.viewed ul li {
+  list-style-type: none;
+  display: flex;
+  align-items: flex-start;
+}
+
+.viewed img {
+  max-width: 48px;
+  max-height: 48px;
+  margin-right: 0.75rem;
+}
+
+.viewed ul li div .btn-outline-dark {
+  background-color: none !important;
+}
+
+.viewed ul li div {
+  display: inline-block;
+}
+
+.viewed ul li h6 {
+  font-size: 0.85rem;
+  margin: 0px;
+}
+.viewed ul li p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 35ch;
+  font-size: 0.75rem;
+  color: #6d6d6d !important;
 }
