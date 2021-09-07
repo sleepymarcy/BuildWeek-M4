@@ -1,0 +1,30 @@
+.card {
+  border-radius: 10px !important;
+}
+
+.card.card-link {
+  box-shadow: none;
+}
+
+.card-wrapper {
+  transition: 0.3s;
+  padding: 0;
+}
+
+.title {
+    font-weight: 400 !important;
+    padding: 24px 24px 0 24px;
+}
+
+.job-title {
+    font-weight: 500 !important;
+}
+
+.list-group {
+    padding: 20px 0 20px 40px;
+}
+
+.list {
+    padding-inline-start: 0 !important;
+}
+
