@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col, Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "../css/Profile.css";
 import { AiOutlineCamera } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
@@ -28,6 +28,7 @@ const Profile = () => {
   }, []);
 
   return (
+
     <Container className="my-5">
       <Row>
         <Col sm={8} className="mx-auto">
@@ -80,23 +81,22 @@ const Profile = () => {
                     </p>
                   </div>
 
-                  <button className="btn btn-sm  btn-primary btn-rounded mr-2">
-                    Open to
-                  </button>
-                  <button className="btn btn-sm btn-outline-info btn-rectangle mr-2">
-                    Message
-                  </button>
-                  <button className="btn btn-sm btn-outline-dark btn-rectangle">
-                    More...
-                  </button>
-                </div>
-              </div>
-            </div>
+    
+
+
+            <button className="btn btn-sm btn-primary btn-rectangle mr-2">
+              Open to
+            </button>
+            <button className="btn btn-sm btn-outline-info btn-rectangle mr-2">
+              Message
+            </button>
+            <button className="btn btn-sm btn-outline-dark btn-rectangle">
+              More...
+            </button>
           </div>
-        </Col>
-        <Col sm={4}></Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 export default Profile;
