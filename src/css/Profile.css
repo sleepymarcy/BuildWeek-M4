@@ -1,3 +1,8 @@
+button {
+  border-radius: 50px !important;
+  padding: 0.2rem 0.95rem !important;
+}
+
 .card {
   border-radius: 10px !important;
   /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.125); */
@@ -55,12 +60,45 @@
 }
 
 .viewed p {
-  margin-bottom: 0px;
+  margin-bottom: 8px;
 }
 
 .viewed ul {
   padding-inline-start: 0px;
 }
+
+.viewed ul a {
+  color: inherit;
+}
 .viewed ul li {
   list-style-type: none;
+  display: flex;
+  align-items: flex-start;
+}
+
+.viewed img {
+  max-width: 48px;
+  max-height: 48px;
+  margin-right: 0.75rem;
+}
+
+.viewed ul li div .btn-outline-dark {
+  background-color: none !important;
+}
+
+.viewed ul li div {
+  display: inline-block;
+}
+
+.viewed ul li h6 {
+  font-size: 0.85rem;
+  margin: 0px;
+}
+.viewed ul li p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 35ch;
+  font-size: 0.75rem;
+  color: #6d6d6d !important;
 }

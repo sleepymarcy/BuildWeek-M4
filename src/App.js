@@ -11,10 +11,10 @@ function App() {
       <MyNav />
       <Container>
         <Row>
-          <Col sm={9}>
+          <Col sm={8}>
             <Profile />
           </Col>
-          <Col sm={3} className="mt-4">
+          <Col sm={4} className="mt-4">
             <AlsoViewed />
           </Col>
         </Row>

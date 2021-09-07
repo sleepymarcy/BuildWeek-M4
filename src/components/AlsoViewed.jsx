@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Button } from "react-bootstrap";
 import "../css/Profile.css";
 
 export default class AlsoViewed extends Component {
@@ -33,9 +34,22 @@ export default class AlsoViewed extends Component {
       <div className="card pt-3 px-3 viewed">
         <p>People also viewed</p>
         <ul>
-          <li className="mt-3">
-            <div>{console.log(this.state.tenProfiles)}</div>
-          </li>
+          {this.state.tenProfiles.map((p) => (
+            <a href="#">
+              <li className="mt-3">
+                <div>
+                  <img src={p.image} className="rounded-circle" />
+                </div>
+                <div>
+                  <h6>
+                    {p.name} {p.surname}
+                  </h6>
+                  <p>{p.bio}</p>
+                  <Button>Connect</Button>
+                </div>
+              </li>
+            </a>
+          ))}
         </ul>
       </div>
     );
