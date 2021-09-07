@@ -30,7 +30,7 @@ const Profile = () => {
   return (
 
     
-          <div id="profile-top" className="card mb-3">
+          <div id="profile-top" className="card mt-4 mb-3">
             <div className="card-img-top-div card-img-top-profile">
               <img
                 className="card-img-top "
