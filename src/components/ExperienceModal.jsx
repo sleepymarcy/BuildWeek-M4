@@ -186,7 +186,7 @@ const ExperienceModal = () => {
         </Modal.Body>
         <Modal.Footer className="bg-light d-flex justify-content-between">
           <Button variant="secondary" className="rounded" onClick={handleClose}>
-            Close
+          delete
           </Button>
           <Button variant="primary" onClick={handleClose}>
             Save
