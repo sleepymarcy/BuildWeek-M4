@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col, Button, Modal} from "react-bootstrap";
+import { Container, Row, Col, Button} from "react-bootstrap";
 import "../css/Profile.css";
 import { AiOutlineCamera } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
-import { ImLinkedin } from "react-icons/im"
+import { ImLinkedin } from "react-icons/im";
 const Profile = () => {
   const [profiles, setProfiles] = useState([]);
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+ 
 
   const fetchProfiles = async () => {
     let response = await fetch(
@@ -36,7 +33,6 @@ const Profile = () => {
         <Col sm={8} className="mx-auto">
           <div id="profile-top" className="card mb-3">
             <div className="card-img-top-div card-img-top-profile">
-           
               <img
                 className="card-img-top "
                 src={
@@ -44,12 +40,11 @@ const Profile = () => {
                 }
                 alt={profiles.name}
               />
-             
             </div>
             <div className="position-absolute d-felx flex-row-reverse px-1 pb-1 camera">
               <AiOutlineCamera />
             </div>
-            
+
             <div className="card-pic ml-4">
               <img
                 className="rounded-circle"
@@ -60,7 +55,10 @@ const Profile = () => {
             </div>
             <div className="card-body pt-1">
               <div className="d-flex justify-content-end ">
-               <Button variant="outline" className="rounded"> <BiPencil /></Button>
+                <Button variant="outline" className="rounded" >
+                  {" "}
+                  <BiPencil />
+                </Button>
               </div>
               <div className="row">
                 <div className="col-12 col-sm-12 col-md-8 col-lg-8 mb-2">
@@ -74,26 +72,12 @@ const Profile = () => {
                     <small>{profiles.bio}</small>
                   </p>
                   <div className="mb-2">
-
-                  <p className="card-text text-muted">
-                    <small>{profiles.area}</small>
-                    <a href={profiles.email}  onClick={handleShow}>  Contact info</a>
-                  </p>
-                  <Modal show={show} onHide={handleClose} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title className="text-muted">{profiles.name+" "+profiles.surname}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <div className="d-flex justify-content-between align-items-center">
-        <h5 className="text-muted">Contact info</h5>
-        <Button variant="outline" > <BiPencil /></Button>
-        </div>
-        <ImLinkedin /> <span  className="text-muted">Your Profile</span>
-          
-        
-        </Modal.Body>
-        
-      </Modal>
+                    <p className="card-text text-muted">
+                      <small>{profiles.area}</small>
+                      <a className="mx-2" href="">
+                        Contact info
+                      </a>
+                    </p>
                   </div>
 
                   <button className="btn btn-sm  btn-primary btn-rounded mr-2">
