@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col, Button} from "react-bootstrap";
+import { Container, Row, Col, Button, Modal} from "react-bootstrap";
 import "../css/Profile.css";
 import { AiOutlineCamera } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
+import { ImLinkedin } from "react-icons/im"
 const Profile = () => {
   const [profiles, setProfiles] = useState([]);
   const [show, setShow] = useState(false);
@@ -76,9 +77,23 @@ const Profile = () => {
 
                   <p className="card-text text-muted">
                     <small>{profiles.area}</small>
-                    <a href={profiles.email}>  Contact info</a>
+                    <a href={profiles.email}  onClick={handleShow}>  Contact info</a>
                   </p>
-                  
+                  <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title className="text-muted">{profiles.name+" "+profiles.surname}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div className="d-flex justify-content-between align-items-center">
+        <h5 className="text-muted">Contact info</h5>
+        <Button variant="outline" > <BiPencil /></Button>
+        </div>
+        <ImLinkedin /> <span  className="text-muted">Your Profile</span>
+          
+        
+        </Modal.Body>
+        
+      </Modal>
                   </div>
 
                   <button className="btn btn-sm  btn-primary btn-rounded mr-2">
