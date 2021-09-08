@@ -1,17 +1,73 @@
 import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 
-const ExperienceModal = () => {
+const ExperienceModal = (props) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [experience, setExperience] = useState({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+  });
+  const handleInput = (e, property) => {
+    setExperience({
+      ...experience,
+      [property]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      let response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${props.id}/experiences`,
+        {
+          method: "POST",
+          body: JSON.stringify(experience),
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM1ZDgxYTdiZTZjMTAwMTVmOWRiOWEiLCJpYXQiOjE2MzA5MTg2ODMsImV4cCI6MTYzMjEyODI4M30.z1FglsnilVoFG29tlQ4cAsplJJ3_M45A3BGoYeYrQl8",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        alert("Your experience was saved correctly!");
+
+        setExperience({
+          role: "",
+          company: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+          area: "",
+        });
+      } else {
+        alert("something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
-    {/* this button for connecting modal with handleshow function */}
+      {/* this button for connecting modal with handleshow function */}
       <button onClick={handleShow}>click</button>
-      <Modal size="lg" show={show} onHide={handleClose} animation={false} scrollable={true}>
+      <Modal
+        size="lg"
+        show={show}
+        onHide={handleClose}
+        animation={false}
+        scrollable={true}
+      >
         <Modal.Header className="bg-light text-muted" closeButton>
           <Modal.Title>Add experience</Modal.Title>
         </Modal.Header>
@@ -20,7 +76,73 @@ const ExperienceModal = () => {
           <Container>
             <Row>
               <Col className="text-muted">
-                <Form.Group
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group className="mb-3">
+                    <Form.Label className="mb-0">
+                      <small>Title*</small>
+                    </Form.Label>
+                    <Form.Control
+                      className="bg-light"
+                      type="text"
+                      placeholder="Ex: Retail Sales Manager"
+                      onChange={(e) => handleInput(e, "role")}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label className="mb-0">
+                      <small>Company name*</small>
+                    </Form.Label>
+                    <Form.Control
+                      className="bg-light"
+                      type="text"
+                      onChange={(e) => handleInput(e, "company")}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label className="mb-0">
+                      <small>Start date</small>
+                    </Form.Label>
+                    <Form.Control
+                      className="bg-light"
+                      type="text"
+                      onChange={(e) => handleInput(e, "startDate")}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label className="mb-0">
+                      <small>End date</small>
+                    </Form.Label>
+                    <Form.Control
+                      className="bg-light"
+                      type="text"
+                      onChange={(e) => handleInput(e, "endDate")}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label className="mb-0">
+                      <small>Description</small>
+                    </Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      onChange={(e) => handleInput(e, "description")}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label className="mb-0">
+                      <small>Area</small>
+                    </Form.Label>
+                    <Form.Control
+                      className="bg-light"
+                      type="text"
+                      onChange={(e) => handleInput(e, "area")}
+                    />
+                  </Form.Group>
+                  <Button variant="primary" type="submit">
+                    Submit
+                  </Button>
+                </Form>
+                {/* <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
@@ -36,7 +158,6 @@ const ExperienceModal = () => {
 
                 <Form.Group controlId="exampleForm.ControlSelect1">
                   <Form.Label className="mb-0">
-                    {" "}
                     <small>Employment type</small>
                   </Form.Label>
                   <Form.Control className="bg-light" as="select">
@@ -180,18 +301,15 @@ const ExperienceModal = () => {
                     <option>2010</option>
                   </Form.Control>
                 </Form.Group>
+                <Button variant="primary" onClick={handleClose}>
+                  Save
+                </Button> */}
               </Col>
             </Row>
           </Container>
         </Modal.Body>
-        <Modal.Footer className="bg-light d-flex justify-content-between">
-          <Button variant="secondary" className="rounded" onClick={handleClose}>
-          delete
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save
-          </Button>
-        </Modal.Footer>
+
+        <Modal.Footer className="bg-light d-flex justify-content-between"></Modal.Footer>
       </Modal>
     </>
   );

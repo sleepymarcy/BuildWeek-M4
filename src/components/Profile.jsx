@@ -21,8 +21,8 @@ const Profile = () => {
     );
     let profiles = await response.json();
     setProfiles(profiles);
+    console.log(profiles._id);
   };
-  console.log(profiles);
 
   useEffect(() => {
     fetchProfiles();
