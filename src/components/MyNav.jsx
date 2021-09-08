@@ -1,7 +1,7 @@
 import { Navbar, Nav, Form, FormControl, InputGroup } from 'react-bootstrap'
 import { Linked, Hicon, Nicon, Jicon, Micon, Bicon } from '../assets/icons.jsx'
 import { FaSearch as Sicon } from 'react-icons/fa'
-import { Work, User } from '../assets/navAssets.jsx'
+import { Work, User } from '../assets/nav.jsx'
 import '../css/Nav.css'
 
 
