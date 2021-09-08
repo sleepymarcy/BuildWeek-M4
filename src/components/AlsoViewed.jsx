@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Button } from "react-bootstrap";
 import "../css/Profile.css";
+import Viewed from "./Viewed";
 
 export default class AlsoViewed extends Component {
   state = {
@@ -31,27 +32,16 @@ export default class AlsoViewed extends Component {
   };
   render() {
     return (
+      <>
       <div className="card pt-3 px-3 viewed">
         <p>People also viewed</p>
-        <ul>
+        
           {this.state.tenProfiles.map((p) => (
-            <a href="#">
-              <li className="mt-3">
-                <div>
-                  <img src={p.image} className="rounded-circle" />
-                </div>
-                <div>
-                  <h6>
-                    {p.name} {p.surname}
-                  </h6>
-                  <p>{p.bio}</p>
-                  <Button>Connect</Button>
-                </div>
-              </li>
-            </a>
+           <Viewed key={p._id} p={p}/>
           ))}
-        </ul>
+    
       </div>
+      </>
     );
   }
 }

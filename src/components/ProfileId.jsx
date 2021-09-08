@@ -5,13 +5,14 @@ import { AiOutlineCamera } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
 import { ImLinkedin } from "react-icons/im";
 import AlsoViewed from "./AlsoViewed";
-import Banner from "../assets/Banner.png";
-const Profile = () => {
-  const [profiles, setProfiles] = useState([]);
-
-  const fetchProfiles = async () => {
+import { useHistory } from "react-router";
+import { withRouter } from "react-router-dom";
+const ProfileId = ({ props, match, location }) => {
+  const [profiles, setProfiles] = useState([{}]);
+  let id = match.params.userId;
+  const fetchProfiles = async (id) => {
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/me",
+      `https://striveschool-api.herokuapp.com/api/profile/${id}`,
       {
         headers: {
           Authorization:
@@ -25,19 +26,25 @@ const Profile = () => {
   console.log(profiles);
 
   useEffect(() => {
-    fetchProfiles();
+    fetchProfiles(id);
   }, []);
-
+  
+  useEffect(() => {
+    fetchProfiles(id);
+  });
   return (
     <Container>
       <Row>
         <Col sm={8}>
           <div id="profile-top" className="card mt-4 mb-3">
             <div className="card-img-top-div card-img-top-profile">
-              <img className="card-img-top " src={Banner} alt={profiles.name} />
-            </div>
-            <div className="position-absolute d-felx flex-row-reverse px-1 pb-1 camera">
-              <AiOutlineCamera />
+              <img
+                className="card-img-top "
+                src={
+                  "https://www.falcon.io/wp-content/uploads/2021/02/SoMe_Templates_2021_Blog_Assets_Blog_Separator_IN_832x304-2.jpg"
+                }
+                alt={profiles.name}
+              />
             </div>
 
             <div className="card-pic ml-4">
@@ -49,12 +56,6 @@ const Profile = () => {
               />
             </div>
             <div className="card-body pt-1">
-              <div className="d-flex justify-content-end ">
-                <Button variant="outline" className="rounded">
-                  {" "}
-                  <BiPencil />
-                </Button>
-              </div>
               <div className="row">
                 <div className="col-12 col-sm-12 col-md-8 col-lg-8 mb-2">
                   <h4 className="card-title font-weight-bold my-1">
@@ -76,7 +77,7 @@ const Profile = () => {
                   </div>
 
                   <button className="btn btn-sm btn-primary btn-rectangle mr-2">
-                    Open to
+                    Connect
                   </button>
                   <button className="btn btn-sm btn-outline-info btn-rectangle mr-2">
                     Message
@@ -96,4 +97,4 @@ const Profile = () => {
     </Container>
   );
 };
-export default Profile;
+export default withRouter(ProfileId);

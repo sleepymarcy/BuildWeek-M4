@@ -2,9 +2,34 @@ import { Navbar, Nav, NavDropdown, Form, FormControl, InputGroup } from 'react-b
 import { Linked, Hicon, Nicon, Jicon, Micon, Bicon, User, Wicon } from '../assets/icons.jsx'
 import { FaSearch as Sicon } from 'react-icons/fa'
 import '../css/Nav.css'
+import { useEffect, useState } from 'react'
 
 
 const MyNav = () => {
+     
+    const [query , setQuery] = useState('')
+    const [profiles, setProfiles ] = useState([])
+
+    const fetchProfiles = async (query) => {
+        let response = await fetch(
+          `https://striveschool-api.herokuapp.com/api/profile/${query}`,
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM1ZDgxYTdiZTZjMTAwMTVmOWRiOWEiLCJpYXQiOjE2MzA5MTg2ODMsImV4cCI6MTYzMjEyODI4M30.z1FglsnilVoFG29tlQ4cAsplJJ3_M45A3BGoYeYrQl8",
+            },
+          }
+        );
+        let profiles = await response.json();
+   
+        setProfiles(profiles);
+      };
+    useEffect(
+        () => {
+            fetchProfiles(query)
+        },[]
+    )
+
     return (
 
         <Navbar bg="light" expand="lg">
@@ -17,7 +42,7 @@ const MyNav = () => {
                             <InputGroup.Prepend>
                                 <InputGroup.Text className='search'><Sicon /></InputGroup.Text>
                             </InputGroup.Prepend>
-                            <FormControl className='search' placeholder="Search" />
+                            <FormControl value={query} onChange={(e)=>setQuery(e.target.value)}className='search' placeholder="Search" />
                         </InputGroup>
                     </Form>
 
