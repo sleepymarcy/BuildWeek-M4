@@ -93,12 +93,14 @@ button {
 .viewed ul li h6 {
   font-size: 0.85rem;
   margin: 0px;
+  text-overflow: ellipsis;
 }
 .viewed ul li p {
-  white-space: nowrap;
-  overflow: hidden;
+  display: block; /* or inline-block */
   text-overflow: ellipsis;
-  max-width: 35ch;
-  font-size: 0.75rem;
-  color: #6d6d6d !important;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 3.6em;
+  line-height: 1.8em;
+  font-size: 0.7rem;
 }

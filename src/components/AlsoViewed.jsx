@@ -44,8 +44,8 @@ export default class AlsoViewed extends Component {
                   <h6>
                     {p.name} {p.surname}
                   </h6>
-                  <p>{p.bio}</p>
-                  <Button>Connect</Button>
+                  <p className="text-muted">{p.bio}</p>
+                  <Button variant="outline-dark">Connect</Button>
                 </div>
               </li>
             </a>
