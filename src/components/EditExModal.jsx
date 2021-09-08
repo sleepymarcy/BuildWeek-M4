@@ -9,25 +9,26 @@ const EditExModal = (props) => {
   const handleShow = () => setShow(true);
 
   const [experience, setExperience] = useState({
-    role: "",
+    role: "hah",
     company: "",
     startDate: "",
     endDate: "",
     description: "",
     area: "",
   });
+
   const handleInput = (e, property) => {
     setExperience({
       ...experience,
       [property]: e.target.value,
     });
+    console.log(experience);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.exId}`,
+        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.dataToEdit._id}`,
         {
           method: "PUT",
           body: JSON.stringify(experience),
@@ -41,15 +42,6 @@ const EditExModal = (props) => {
 
       if (response.ok) {
         alert("Your experience was saved correctly!");
-
-        setExperience({
-          role: "",
-          company: "",
-          startDate: "",
-          endDate: "",
-          description: "",
-          area: "",
-        });
       } else {
         alert("something went wrong");
       }
@@ -62,7 +54,7 @@ const EditExModal = (props) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.exId}`,
+        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.dataToEdit._id}`,
         {
           method: "DELETE",
           headers: {
@@ -74,7 +66,7 @@ const EditExModal = (props) => {
       );
 
       if (response.ok) {
-        alert("Your experience was deleted correctly!");
+        alert("Your experience was deleted correctly!" + props.dataToEdit._id);
       } else {
         alert("something went wrong");
       }

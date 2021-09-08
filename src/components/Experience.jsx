@@ -21,7 +21,6 @@ const Experience = () => {
     let experiences = await response.json();
     setExperiences(experiences);
   };
-  console.log(experiences);
 
   useEffect(() => {
     fetchExperiences();
@@ -41,23 +40,31 @@ const Experience = () => {
               <Card.Link className="link-wrapper">
                 <img
                   className="job-logo"
-                  src="https://media-exp1.licdn.com/dms/image/C4D0BAQFFQIjyDsOK0w/company-logo_100_100/0/1593351903670?e=1639008000&amp;v=beta&amp;t=38emh8r8X3fw7Ah3ky91KyaVJT_6wSkxl1MqF2QRf5E"
+                  src="https://media-exp1.licdn.com/dms/image/C4D0BAQFFQIjyDsOK0w/company-logo_100_100/0/1593351903670?e=1639008000&v=beta&t=38emh8r8X3fw7Ah3ky91KyaVJT_6wSkxl1MqF2QRf5E"
                   alt="Strive School"
-                ></img>
+                />
                 <div className="job-wrapper">
                   <ListGroup.Item as="li">
-                    <p className="job-title">{e.role}</p>
-                    <p className="employer">{e.company}</p>
+                    <p className="job-title">{e.company}</p>
+                    <p>
+                      <small>2yrs</small>
+                    </p>
+                    <p className="employer">{e.role}</p>
+
                     <h6 className="year">
                       <small>
                         {e.startDate} - {e.endDate}
+                        <br />
+                        {e.area}
                       </small>
                     </h6>
+
+                    <p class="description">{e.description}</p>
                   </ListGroup.Item>
                 </div>
                 <Card.Link className="pencil">
                   <Button className="p-0 ex-btn" variant="none">
-                    <EditExModal exId={e._id} />
+                    <EditExModal dataToEdit={e} />
                   </Button>
                 </Card.Link>
               </Card.Link>

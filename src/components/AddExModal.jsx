@@ -27,7 +27,7 @@ const AddExModal = (props) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${props.id}/experiences`,
+        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences`,
         {
           method: "POST",
           body: JSON.stringify(experience),
