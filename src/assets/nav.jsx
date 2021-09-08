@@ -41,7 +41,7 @@ function WorkModal() {
                 <div className='work-content'>
                     <Modal.Header className='work-head' closeButton >
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body className='p-0'>
                         <Card>
                             <Card.Title className='p-4 mb-0'>Visit More LinkedIn Products</Card.Title>
                             <ListGroup variant="flush" className='icon-list'>
