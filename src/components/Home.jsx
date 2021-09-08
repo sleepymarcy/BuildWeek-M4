@@ -11,6 +11,7 @@ import Suggestions from "./Suggestions"
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-5">
                         <CreatePost /> 
+                        <hr />
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-4">
                         <Suggestions />
