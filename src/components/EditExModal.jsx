@@ -1,7 +1,8 @@
 import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
+import { Pencil } from "../assets/icons.jsx";
 
-const ExperienceModal = (props) => {
+const EditExModal = (props) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -26,9 +27,9 @@ const ExperienceModal = (props) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${props.id}/experiences`,
+        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.exId}`,
         {
-          method: "POST",
+          method: "PUT",
           body: JSON.stringify(experience),
           headers: {
             Authorization:
@@ -57,10 +58,37 @@ const ExperienceModal = (props) => {
     }
   };
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      let response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.exId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM1ZDgxYTdiZTZjMTAwMTVmOWRiOWEiLCJpYXQiOjE2MzA5MTg2ODMsImV4cCI6MTYzMjEyODI4M30.z1FglsnilVoFG29tlQ4cAsplJJ3_M45A3BGoYeYrQl8",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        alert("Your experience was deleted correctly!");
+      } else {
+        alert("something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       {/* this button for connecting modal with handleshow function */}
-      <button onClick={handleShow}>click</button>
+      <Button className="p-0 ex-btn" variant="none" onClick={handleShow}>
+        <Pencil />
+      </Button>
       <Modal
         size="lg"
         show={show}
@@ -140,6 +168,9 @@ const ExperienceModal = (props) => {
                   </Form.Group>
                   <Button variant="primary" type="submit">
                     Submit
+                  </Button>
+                  <Button variant="danger" onClick={handleDelete}>
+                    Delete
                   </Button>
                 </Form>
                 {/* <Form.Group
@@ -315,4 +346,4 @@ const ExperienceModal = (props) => {
   );
 };
 
-export default ExperienceModal;
+export default EditExModal;

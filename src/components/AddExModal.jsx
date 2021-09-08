@@ -1,7 +1,8 @@
 import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
+import { Picon } from "../assets/icons.jsx";
 
-const ExperienceModal = (props) => {
+const AddExModal = (props) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -60,7 +61,9 @@ const ExperienceModal = (props) => {
   return (
     <>
       {/* this button for connecting modal with handleshow function */}
-      <button onClick={handleShow}>click</button>
+      <Button className="p-0 ex-btn" variant="none" onClick={handleShow}>
+        <Picon className="plus-icon" />
+      </Button>
       <Modal
         size="lg"
         show={show}
@@ -315,4 +318,4 @@ const ExperienceModal = (props) => {
   );
 };
 
-export default ExperienceModal;
+export default AddExModal;
