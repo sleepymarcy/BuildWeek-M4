@@ -34,7 +34,7 @@ const ProfileLeft = ({profiles}) => {
 
         <div className="list-group list-group-flush">
           <div className="list-group-item text-center py-1 d-flex justify-content-between ">
-            <small className="text-muted ">Who's viewed your profile</small>
+            <small className="text-muted mr-4">Who's viewed your profile</small>
             <small className="viewscount text-muted">24</small>
           </div>
           <h6>
