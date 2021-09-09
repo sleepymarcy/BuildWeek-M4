@@ -25,9 +25,9 @@ const ProfileId = ({ props, match, location }) => {
   };
   console.log(profiles);
 
-  useEffect(() => {
-    fetchProfiles(id);
-  }, []);
+  // useEffect(() => {
+  //   fetchProfiles(id);
+  // }, []);
   
   useEffect(() => {
     fetchProfiles(id);
