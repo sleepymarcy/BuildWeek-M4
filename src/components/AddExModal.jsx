@@ -140,6 +140,10 @@ const AddExModal = () => {
                       onChange={(e) => handleInput(e, "area")}
                     />
                   </Form.Group>
+                  <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Label>Add image</Form.Label>
+                    <Form.Control type="file" />
+                  </Form.Group>
                   <Button variant="primary" type="submit">
                     Submit
                   </Button>
