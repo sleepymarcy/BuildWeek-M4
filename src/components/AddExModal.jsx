@@ -1,5 +1,5 @@
 import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Picon } from "../assets/icons.jsx";
 
 const AddExModal = () => {
@@ -7,6 +7,26 @@ const AddExModal = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [experiences, setExperiences] = useState([]);
+
+  const fetchExperiences = async () => {
+    let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences",
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM1ZDgxYTdiZTZjMTAwMTVmOWRiOWEiLCJpYXQiOjE2MzA5MTg2ODMsImV4cCI6MTYzMjEyODI4M30.z1FglsnilVoFG29tlQ4cAsplJJ3_M45A3BGoYeYrQl8",
+        },
+      }
+    );
+    let experiences = await response.json();
+    setExperiences(experiences);
+  };
+
+  useEffect(() => {
+    fetchExperiences();
+  }, []);
 
   const [experience, setExperience] = useState({
     role: "",
@@ -41,8 +61,9 @@ const AddExModal = () => {
 
       if (response.ok) {
         alert("Your experience was saved correctly!");
-        handleClose();
+
         setExperience({
+          _id: "",
           role: "",
           company: "",
           startDate: "",
@@ -50,6 +71,8 @@ const AddExModal = () => {
           description: "",
           area: "",
         });
+        console.log(experience);
+        // handleClose();
       } else {
         alert("something went wrong");
       }
@@ -139,6 +162,10 @@ const AddExModal = () => {
                       type="text"
                       onChange={(e) => handleInput(e, "area")}
                     />
+                  </Form.Group>
+                  <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Label>Add image</Form.Label>
+                    <Form.Control type="file" />
                   </Form.Group>
                   <Button variant="primary" type="submit">
                     Submit
