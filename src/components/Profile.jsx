@@ -74,6 +74,7 @@ const Profile = () => {
                 </a>
               </p>
             </div>
+            </div>
 
             <div className="card-body pt-1">
               <div className="d-flex justify-content-end mt-5">
@@ -101,6 +102,7 @@ const Profile = () => {
                       </a>
                     </p>
                   </div>
+                  </div>
 
     
 
@@ -119,6 +121,8 @@ const Profile = () => {
         </div>
       </div>
     </div>
+    </div>
+
   );
 };
 export default Profile;
