@@ -1,4 +1,4 @@
-import { Col, Card, ListGroup, Button } from "react-bootstrap";
+import { Card, ListGroup, Button } from "react-bootstrap";
 
 import "../css/Experience.css";
 import AddExModal from "./AddExModal.jsx";

@@ -1,11 +1,19 @@
-import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
+import {
+  Alert,
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Modal,
+} from "react-bootstrap";
 import { useState } from "react";
 import { Pencil } from "../assets/icons.jsx";
 import { format, parseISO } from "date-fns";
 
 const EditExModal = (props) => {
   const [show, setShow] = useState(false);
-
+  const [isError, setIsError] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -41,10 +49,9 @@ const EditExModal = (props) => {
       );
 
       if (response.ok) {
-        alert("Your experience was saved correctly!");
         handleClose();
       } else {
-        alert("something went wrong");
+        setIsError(true);
       }
     } catch (error) {
       console.log(error);
@@ -93,8 +100,14 @@ const EditExModal = (props) => {
         scrollable={true}
       >
         <Modal.Header className="bg-light text-muted" closeButton>
-          <Modal.Title>Add experience</Modal.Title>
+          <Modal.Title>Edit experience</Modal.Title>
         </Modal.Header>
+
+        {isError && (
+          <Alert variant="danger" className="m-3">
+            Something went wrong!
+          </Alert>
+        )}
         <Modal.Body className="bg-light" scrollable>
           <h3>Where do you currently work?</h3>
           <Container>
