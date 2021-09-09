@@ -2,6 +2,7 @@ import { Dropdown, Modal, Card, ListGroup } from 'react-bootstrap'
 import '../css/Nav.css'
 import { useState } from 'react';
 import { Wicon } from './icons.jsx'
+import { GrClose } from 'react-icons/gr'
 
 const User = () => {
     return (
@@ -37,9 +38,10 @@ function WorkModal() {
         <>
             <Dropdown.Toggle variant='none' className='text-dropdown toggle-dropdown' onClick={handleShow}>Work</Dropdown.Toggle>
 
-            <Modal className='work-modal' show={show} onHide={handleClose}>
-                <div className='work-content'>
-                    <Modal.Header className='work-head' closeButton >
+            <Modal className='work-modal' show={show} onHide={handleClose} >
+                <div className='work-content' >
+                    <Modal.Header className='work-head'>
+                        <GrClose className='work-head-close'/>
                     </Modal.Header>
                     <Modal.Body className='p-0'>
                         <Card>
