@@ -1,7 +1,8 @@
-import { Dropdown, Modal, Card, ListGroup } from 'react-bootstrap'
+import { Dropdown, Card, ListGroup } from 'react-bootstrap'
 import '../css/Nav.css'
-import { useState } from 'react';
 import { Wicon } from './icons.jsx'
+import React from 'react';
+import WorkDrawer from './WorkDrawer.jsx';
 import { GrClose } from 'react-icons/gr'
 
 const User = () => {
@@ -28,22 +29,46 @@ const User = () => {
     )
 }
 
-function WorkModal() {
-    const [show, setShow] = useState(false);
+class Work extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            right: false
+        };
+        this.toggleDrawer = this.toggleDrawer.bind(this);
+    }
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    toggleDrawer = open => () => {
+        this.setState({
+            right: open
+        });
+    };
 
-    return (
-        <>
-            <Dropdown.Toggle variant='none' className='text-dropdown toggle-dropdown' onClick={handleShow}>Work</Dropdown.Toggle>
+    container = null;
 
-            <Modal className='work-modal' show={show} onHide={handleClose} >
-                <div className='work-content' >
-                    <Modal.Header className='work-head'>
-                        <GrClose className='work-head-close'/>
-                    </Modal.Header>
-                    <Modal.Body className='p-0'>
+    render() {
+        return (
+            <div className='dropdown-wrapper'>
+
+                <Dropdown type='button' className='link-dropdown' >
+                    <Wicon />
+                    <Dropdown.Toggle variant='none' className='text-dropdown toggle-dropdown' onClick={this.toggleDrawer(true)}>Work</Dropdown.Toggle>
+                </Dropdown>
+
+                <WorkDrawer
+                    className='drawer'
+                    anchor="right"
+                    variant="temporary"
+                    open={this.state.right}
+                    onClose={this.toggleDrawer(false)}
+                >
+
+                    <div className='row work-head'>
+                        <button className='work-button' variant='none' onClick={this.toggleDrawer(false)}> <GrClose className='GrClose' /> </button>
+                    </div>
+                    <div className='work-content'>
+
+
                         <Card>
                             <Card.Title className='p-4 mb-0'>Visit More LinkedIn Products</Card.Title>
                             <ListGroup variant="flush" className='icon-list'>
@@ -80,7 +105,7 @@ function WorkModal() {
                                     <ListGroup.Item className='work-list'>Post a job for free</ListGroup.Item>
                                     <small className='mb-1'>Get your job in front of quality candidates</small>
                                 </div>
-                            
+
                                 <div className='work-list-sec'>
                                     <ListGroup.Item className='work-list'>Marketing Solutions</ListGroup.Item>
                                     <small className='mb-1'>Acquire customers and grow your business</small>
@@ -90,29 +115,100 @@ function WorkModal() {
                                     <ListGroup.Item className='work-list'>Learning Solutions</ListGroup.Item>
                                     <small className='mb-1'>Develop talent across your organization</small>
                                 </div>
-                               
-                                
+
+
 
                             </ListGroup>
                             <Card.Title className='work-list last'>Create Company Page</Card.Title>
                         </Card>
-                    </Modal.Body>
-                </div>
-            </Modal>
-        </>
-    );
+
+
+                    </div>
+                </WorkDrawer>
+            </div>
+        )
+    }
 }
 
-const Work = () => {
 
-    return (
-        <div className='dropdown-wrapper'>
-            <Dropdown type='button' className='link-dropdown' variant='none'>
-                <Wicon />
-                <WorkModal />
-            </Dropdown>
-        </div>
-    )
-}
 
-export { WorkModal, Work, User }
+
+export { Work, User }
+
+
+
+// function WorkModal() {
+
+// const [show, setShow] = useState(false);
+
+// const handleClose = () => setShow(false);
+// const handleShow = () => setShow(true);
+
+// return (
+//     <>
+//         <Dropdown.Toggle variant='none' className='text-dropdown toggle-dropdown' onClick={handleShow}>Work</Dropdown.Toggle>
+
+//         <Modal className='work-modal' show={show} onHide={handleClose} >
+//             <div className='work-content' >
+//                 <Modal.Header className='work-head'>
+//                     <GrClose className='work-head-close'/>
+//                 </Modal.Header>
+//                 <Modal.Body className='p-0'>
+//                     <Card>
+//                         <Card.Title className='p-4 mb-0'>Visit More LinkedIn Products</Card.Title>
+//                         <ListGroup variant="flush" className='icon-list'>
+//                             <div>
+//                                 <small className='mb-1 pr-2'>Learning</small>
+//                                 <small className='mb-1 pr-2'>Insights</small>
+//                                 <small className='mb-1 pr-2'>Post a Job</small>
+//                                 <small className='mb-1 pr-2'>Advertise</small>
+//                             </div>
+
+//                             <div>
+//                                 <small className='mb-1 pr-2'>Find Leads</small>
+//                                 <small className='mb-1 pr-2'>Groups</small>
+//                                 <small className='mb-1 pr-2'>ProFinder</small>
+//                                 <small className='mb-1 pr-2'>Salary</small>
+//                             </div>
+//                         </ListGroup>
+//                     </Card>
+//                     <Card className='mt-2'>
+//                         <Card.Title className='p-4 mb-0'>LinkedIn Business Services</Card.Title>
+//                         <ListGroup variant="flush" className='work-title'>
+
+//                             <div className='work-list-sec'>
+//                                 <ListGroup.Item className='work-list'>Talent Solutions</ListGroup.Item>
+//                                 <small className='mb-1'>Find, attract and recruit talent</small>
+//                             </div>
+
+//                             <div className='work-list-sec'>
+//                                 <ListGroup.Item className='work-list'>Sales Solutions</ListGroup.Item>
+//                                 <small className='mb-1'>Unlock sales opportunities</small>
+//                             </div>
+
+//                             <div className='work-list-sec'>
+//                                 <ListGroup.Item className='work-list'>Post a job for free</ListGroup.Item>
+//                                 <small className='mb-1'>Get your job in front of quality candidates</small>
+//                             </div>
+
+//                             <div className='work-list-sec'>
+//                                 <ListGroup.Item className='work-list'>Marketing Solutions</ListGroup.Item>
+//                                 <small className='mb-1'>Acquire customers and grow your business</small>
+//                             </div>
+
+//                             <div className='work-list-sec'>
+//                                 <ListGroup.Item className='work-list'>Learning Solutions</ListGroup.Item>
+//                                 <small className='mb-1'>Develop talent across your organization</small>
+//                             </div>
+
+
+
+//                         </ListGroup>
+//                         <Card.Title className='work-list last'>Create Company Page</Card.Title>
+//                     </Card>
+//                 </Modal.Body>
+//             </div>
+//         </Modal>
+//     </>
+// );
+// }

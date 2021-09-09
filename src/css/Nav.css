@@ -2,7 +2,6 @@
     padding: 0 !important;
     border-bottom: 1px solid #e0e0e0 !important;
     max-height: 52px;
-    z-index: 1050;
 }
 
 .navbar-nav {
@@ -115,50 +114,37 @@
     color: #666666;
 }
 
-/* div.modal-dialog {
-    top: 0;
-    margin-right: 0 !important;
-    width: 380px;
-} */
 
-.work-modal {
-    position: absolute;
-    height: calc(100vh - 52px);
-    max-height: 100vh;
-    float: right !important;
-    top: 0;
-    right: 0 !important;
-    transform: none;
+.MuiDrawer-paper {
+    width: 380px;
+    margin-top: 52px;
+    border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    flex: 1 0;
-    padding-bottom: 32px;
-    margin-top: 24px;
-    overflow: hidden;
-    will-change: transform;
-    transition: transform .3s cubic-bezier(0,0,.3,1);
 }
 
 .work-content {
     display: block;
     overflow: auto;
     min-height: 5.6rem;
-    margin-top: 24px;
-    padding: 0 24px 32px 24px;
+    margin-top: 48px;
+    padding: 16px 24px 32px 24px;
 }
 
-.work-head-close {
-  
-    height: 24px;
+.GrClose {
     width: 24px;
-   
+    height: 24px;
+    fill: #666666;
+}
+
+.work-button {
+    border: 0;
+    background-color: white;
+    float: right;
 }
 
 .work-head {
-
-    padding: 0;
-    margin: 0 0 24px 424px;
-    border: 0;
+    padding: 15px 15px 0 0;
+    float: right;
 }
 
 .h5, h5 {
