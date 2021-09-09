@@ -4,6 +4,7 @@ import "../css/Experience.css";
 import AddExModal from "./AddExModal.jsx";
 import { useEffect, useState } from "react";
 import EditExModal from "./EditExModal";
+import { format, parseISO, formatDistance } from "date-fns";
 
 const Experience = () => {
   const [experiences, setExperiences] = useState([]);
@@ -21,11 +22,11 @@ const Experience = () => {
     let experiences = await response.json();
     setExperiences(experiences);
   };
-  console.log(experiences);
 
   useEffect(() => {
     fetchExperiences();
   }, []);
+
   return (
     <Card as="ul" className="list">
       <Card.Body className="card-wrapper">
@@ -37,30 +38,48 @@ const Experience = () => {
         </Card.Header>
         <ul>
           {experiences.map((e) => (
-            <ListGroup variant="flush">
-              <Card.Link className="link-wrapper">
-                <img
-                  className="job-logo"
-                  src="https://media-exp1.licdn.com/dms/image/C4D0BAQFFQIjyDsOK0w/company-logo_100_100/0/1593351903670?e=1639008000&amp;v=beta&amp;t=38emh8r8X3fw7Ah3ky91KyaVJT_6wSkxl1MqF2QRf5E"
-                  alt="Strive School"
-                ></img>
-                <div className="job-wrapper">
+            <ListGroup variant="flush" key={e._id}>
+              <Card className="link-wrapper d-inline-block">
+                <div>
+                  <img className="job-logo" src={e.image} alt={e.company} />
+                </div>
+                <div className="job-wrapper pl-4">
                   <ListGroup.Item as="li">
-                    <p className="job-title">{e.role}</p>
-                    <p className="employer">{e.company}</p>
+                    <div className="d-flex justify-content-between list-item-content">
+                      <a href="#">
+                        <div>
+                          <p className="job-title">{e.company}</p>
+
+                          <p>
+                            <small>
+                              {formatDistance(
+                                parseISO(e.startDate),
+                                parseISO(e.endDate)
+                              )}
+                            </small>
+                          </p>
+                        </div>
+                      </a>
+                      <Button className="p-0 ex-btn" variant="none">
+                        <EditExModal selectedData={e} />
+                      </Button>
+                    </div>
+
+                    <p className="employer">{e.role}</p>
+
                     <h6 className="year">
                       <small>
-                        {e.startDate} - {e.endDate}
+                        {format(parseISO(e.startDate), "MMMM yyyy")} -
+                        {format(parseISO(e.endDate), "MMMM yyyy")}
+                        <br />
+                        {e.area}
                       </small>
                     </h6>
+
+                    <p class="description">{e.description}</p>
                   </ListGroup.Item>
                 </div>
-                <Card.Link className="pencil">
-                  <Button className="p-0 ex-btn" variant="none">
-                    <EditExModal exId={e._id} />
-                  </Button>
-                </Card.Link>
-              </Card.Link>
+              </Card>
             </ListGroup>
           ))}
         </ul>

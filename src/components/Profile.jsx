@@ -6,7 +6,6 @@ import { BiPencil } from "react-icons/bi";
 import { ImLinkedin } from "react-icons/im";
 const Profile = () => {
   const [profiles, setProfiles] = useState([]);
- 
 
   const fetchProfiles = async () => {
     let response = await fetch(
@@ -21,46 +20,48 @@ const Profile = () => {
     let profiles = await response.json();
     setProfiles(profiles);
   };
-  console.log(profiles);
 
   useEffect(() => {
     fetchProfiles();
   }, []);
 
   return (
+    <div id="profile-top" className="card mt-4 mb-3">
+      <div className="card-img-top-div card-img-top-profile">
+        <img
+          className="card-img-top "
+          src={
+            "https://www.falcon.io/wp-content/uploads/2021/02/SoMe_Templates_2021_Blog_Assets_Blog_Separator_IN_832x304-2.jpg"
+          }
+          alt={profiles.name}
+        />
+      </div>
+      <div className="position-absolute d-felx flex-row-reverse px-1 pb-1 camera">
+        <AiOutlineCamera />
+      </div>
 
-    
-          <div id="profile-top" className="card mb-3">
-            <div className="card-img-top-div card-img-top-profile">
-              <img
-                className="card-img-top "
-                src={
-                  "https://www.falcon.io/wp-content/uploads/2021/02/SoMe_Templates_2021_Blog_Assets_Blog_Separator_IN_832x304-2.jpg"
-                }
-                alt={profiles.name}
-              />
-            </div>
-            <div className="position-absolute d-felx flex-row-reverse px-1 pb-1 camera">
-              <AiOutlineCamera />
+      <div className="card-pic ml-4">
+        <img
+          className="rounded-circle"
+          src={profiles.image}
+          width={150}
+          height={150}
+        />
+      </div>
+      <div className="card-body pt-1">
+        
+        <div className="row">
+          
+          <div className="card-body pt-1">
+            <div className="d-flex justify-content-end mt-5">
+              <Button variant="outline" className="ex-btn">
+                <BiPencil />
+              </Button>
             </div>
 
-            <div className="card-pic ml-4">
-              <img
-                className="rounded-circle"
-                src={profiles.image}
-                width={150}
-                height={150}
-              />
-            </div>
-            <div className="card-body pt-1">
-              <div className="d-flex justify-content-end ">
-                <Button variant="outline" className="rounded" >
-                  {" "}
-                  <BiPencil />
-                </Button>
-              </div>
-              <div className="row">
-                <div className="col-12 col-sm-12 col-md-8 col-lg-8 mb-2">
+        
+
+                <div className="col-12 col-sm-12 col-md-8 col-lg-8  mb-2">
                   <h4 className="card-title font-weight-bold my-1">
                     {profiles.name + " " + profiles.surname}
                   </h4>
@@ -78,23 +79,25 @@ const Profile = () => {
                       </a>
                     </p>
                   </div>
+                  </div>
 
-    
 
 
-            <button className="btn btn-sm btn-primary btn-rectangle mr-2">
-              Open to
-            </button>
-            <button className="btn btn-sm btn-outline-info btn-rectangle mr-2">
-              Message
-            </button>
-            <button className="btn btn-sm btn-outline-dark btn-rectangle">
-              More...
-            </button>
+                <button className="btn btn-sm btn-primary btn-rectangle mr-2">
+                  Open to
+                </button>
+                <button className="btn btn-sm btn-outline-info btn-rectangle mr-2">
+                  Message
+                </button>
+                <button className="btn btn-sm btn-outline-dark btn-rectangle">
+                  More...
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      
+
   );
 };
 export default Profile;

@@ -35,7 +35,7 @@ export default class AlsoViewed extends Component {
         <p>People also viewed</p>
         <ul>
           {this.state.tenProfiles.map((p) => (
-            <a href="#">
+            <a href="#" key={p._id}>
               <li className="mt-3">
                 <div>
                   <img src={p.image} className="rounded-circle" />
@@ -44,8 +44,8 @@ export default class AlsoViewed extends Component {
                   <h6>
                     {p.name} {p.surname}
                   </h6>
-                  <p>{p.bio}</p>
-                  <Button>Connect</Button>
+                  <p className="text-muted">{p.bio}</p>
+                  <Button variant="outline-dark">Connect</Button>
                 </div>
               </li>
             </a>
