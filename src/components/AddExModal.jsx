@@ -2,7 +2,7 @@ import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import { Picon } from "../assets/icons.jsx";
 
-const AddExModal = (props) => {
+const AddExModal = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -27,7 +27,7 @@ const AddExModal = (props) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${props.id}/experiences`,
+        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences`,
         {
           method: "POST",
           body: JSON.stringify(experience),
@@ -41,7 +41,7 @@ const AddExModal = (props) => {
 
       if (response.ok) {
         alert("Your experience was saved correctly!");
-
+        handleClose();
         setExperience({
           role: "",
           company: "",
@@ -105,9 +105,9 @@ const AddExModal = (props) => {
                     <Form.Label className="mb-0">
                       <small>Start date</small>
                     </Form.Label>
+
                     <Form.Control
-                      className="bg-light"
-                      type="text"
+                      type="date"
                       onChange={(e) => handleInput(e, "startDate")}
                     />
                   </Form.Group>
@@ -116,8 +116,7 @@ const AddExModal = (props) => {
                       <small>End date</small>
                     </Form.Label>
                     <Form.Control
-                      className="bg-light"
-                      type="text"
+                      type="date"
                       onChange={(e) => handleInput(e, "endDate")}
                     />
                   </Form.Group>
