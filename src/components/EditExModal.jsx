@@ -1,21 +1,31 @@
-import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
+import {
+  Alert,
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Modal,
+} from "react-bootstrap";
 import { useState } from "react";
 import { Pencil } from "../assets/icons.jsx";
+import { format, parseISO } from "date-fns";
 
 const EditExModal = (props) => {
   const [show, setShow] = useState(false);
-
+  const [isError, setIsError] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const [experience, setExperience] = useState({
-    role: "",
-    company: "",
-    startDate: "",
-    endDate: "",
-    description: "",
-    area: "",
+    role: props.selectedData.role,
+    company: props.selectedData.company,
+    startDate: props.selectedData.startDate,
+    endDate: props.selectedData.endDate,
+    description: props.selectedData.description,
+    area: props.selectedData.area,
   });
+
   const handleInput = (e, property) => {
     setExperience({
       ...experience,
@@ -23,11 +33,10 @@ const EditExModal = (props) => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.exId}`,
+        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.selectedData._id}`,
         {
           method: "PUT",
           body: JSON.stringify(experience),
@@ -40,18 +49,9 @@ const EditExModal = (props) => {
       );
 
       if (response.ok) {
-        alert("Your experience was saved correctly!");
-
-        setExperience({
-          role: "",
-          company: "",
-          startDate: "",
-          endDate: "",
-          description: "",
-          area: "",
-        });
+        handleClose();
       } else {
-        alert("something went wrong");
+        setIsError(true);
       }
     } catch (error) {
       console.log(error);
@@ -62,7 +62,7 @@ const EditExModal = (props) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.exId}`,
+        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.selectedData._id}`,
         {
           method: "DELETE",
           headers: {
@@ -74,7 +74,10 @@ const EditExModal = (props) => {
       );
 
       if (response.ok) {
-        alert("Your experience was deleted correctly!");
+        alert(
+          "Your experience was deleted correctly!" + props.selectedData._id
+        );
+        handleClose();
       } else {
         alert("something went wrong");
       }
@@ -97,8 +100,14 @@ const EditExModal = (props) => {
         scrollable={true}
       >
         <Modal.Header className="bg-light text-muted" closeButton>
-          <Modal.Title>Add experience</Modal.Title>
+          <Modal.Title>Edit experience</Modal.Title>
         </Modal.Header>
+
+        {isError && (
+          <Alert variant="danger" className="m-3">
+            Something went wrong!
+          </Alert>
+        )}
         <Modal.Body className="bg-light" scrollable>
           <h3>Where do you currently work?</h3>
           <Container>
@@ -112,6 +121,7 @@ const EditExModal = (props) => {
                     <Form.Control
                       className="bg-light"
                       type="text"
+                      value={experience.role}
                       placeholder="Ex: Retail Sales Manager"
                       onChange={(e) => handleInput(e, "role")}
                     />
@@ -123,6 +133,7 @@ const EditExModal = (props) => {
                     <Form.Control
                       className="bg-light"
                       type="text"
+                      value={experience.company}
                       onChange={(e) => handleInput(e, "company")}
                     />
                   </Form.Group>
@@ -130,9 +141,13 @@ const EditExModal = (props) => {
                     <Form.Label className="mb-0">
                       <small>Start date</small>
                     </Form.Label>
+
                     <Form.Control
-                      className="bg-light"
-                      type="text"
+                      type="date"
+                      value={format(
+                        parseISO(experience.startDate),
+                        "yyyy-MM-dd"
+                      )}
                       onChange={(e) => handleInput(e, "startDate")}
                     />
                   </Form.Group>
@@ -141,8 +156,8 @@ const EditExModal = (props) => {
                       <small>End date</small>
                     </Form.Label>
                     <Form.Control
-                      className="bg-light"
-                      type="text"
+                      type="date"
+                      value={format(parseISO(experience.endDate), "yyyy-MM-dd")}
                       onChange={(e) => handleInput(e, "endDate")}
                     />
                   </Form.Group>
@@ -153,6 +168,7 @@ const EditExModal = (props) => {
                     <Form.Control
                       as="textarea"
                       rows={3}
+                      value={experience.description}
                       onChange={(e) => handleInput(e, "description")}
                     />
                   </Form.Group>
@@ -163,6 +179,7 @@ const EditExModal = (props) => {
                     <Form.Control
                       className="bg-light"
                       type="text"
+                      value={experience.area}
                       onChange={(e) => handleInput(e, "area")}
                     />
                   </Form.Group>
