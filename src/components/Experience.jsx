@@ -4,7 +4,7 @@ import "../css/Experience.css";
 import AddExModal from "./AddExModal.jsx";
 import { useEffect, useState } from "react";
 import EditExModal from "./EditExModal";
-import { format, parseISO } from "date-fns";
+import { format, parseISO, formatDistance } from "date-fns";
 
 const Experience = () => {
   const [experiences, setExperiences] = useState([]);
@@ -51,7 +51,12 @@ const Experience = () => {
                           <p className="job-title">{e.company}</p>
 
                           <p>
-                            <small>2yrs</small>
+                            <small>
+                              {formatDistance(
+                                parseISO(e.startDate),
+                                parseISO(e.endDate)
+                              )}
+                            </small>
                           </p>
                         </div>
                       </a>
