@@ -53,14 +53,14 @@ const Profile = () => {
               />
             </div>
             <div className="card-body pt-1">
-              <div className="d-flex justify-content-end ">
-                <Button variant="outline" className="rounded" >
-                  {" "}
+              <div className="d-flex justify-content-end mt-5">
+                <Button variant="outline" className="ex-btn" >
+                
                   <BiPencil />
                 </Button>
               </div>
               <div className="row">
-                <div className="col-12 col-sm-12 col-md-8 col-lg-8 mb-2">
+                <div className="col-12 col-sm-12 col-md-8 col-lg-8  mb-2">
                   <h4 className="card-title font-weight-bold my-1">
                     {profiles.name + " " + profiles.surname}
                   </h4>

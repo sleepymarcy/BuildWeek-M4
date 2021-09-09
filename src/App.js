@@ -11,10 +11,11 @@ import Home from './components/Home.jsx'
 function App() {
   return (
     <div className="main">
+
       <MyNav />
-      <Home />
+      {/* <Home /> */}
        
-      {/* <Container>
+      <Container>
         <Row>
           <Col sm={8}>
             <Profile />
@@ -25,7 +26,7 @@ function App() {
           </Col>
           
         </Row>
-      </Container> */}
+      </Container>
     </div>
   );
 }

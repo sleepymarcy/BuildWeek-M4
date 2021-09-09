@@ -2,9 +2,9 @@ import React from "react";
 import puffer1 from "../assets/puffer1.png";
 import "../css/Home.css";
 import Home from "./Home";
-
 import PostModal from "./PostModal";
-const CreatePost = () => {
+
+const CreatePost = ({profiles}) => {
 
 
     return (
@@ -15,7 +15,7 @@ const CreatePost = () => {
         
               <img
                 className="rounded-circle"
-                src={puffer1}
+                src={profiles.image}
                 width={50}
                 height={50}
                 alt=""

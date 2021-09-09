@@ -3,9 +3,33 @@ import CreatePost from "./CreatePost"
 import Suggestions from "./Suggestions"
 import { useState, useEffect } from "react"
 import Feed from './Feed'
-
+import PostModal from "./PostModal"
 
     const Home = () => {
+
+
+      const [profiles, setProfiles] = useState([]);
+ 
+
+      const fetchProfiles = async () => {
+        let response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/profile/me",
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM1ZDgxYTdiZTZjMTAwMTVmOWRiOWEiLCJpYXQiOjE2MzA5MTg2ODMsImV4cCI6MTYzMjEyODI4M30.z1FglsnilVoFG29tlQ4cAsplJJ3_M45A3BGoYeYrQl8",
+            },
+          }
+        );
+        let profiles = await response.json();
+        setProfiles(profiles);
+      };
+      console.log(profiles);
+    
+      useEffect(() => {
+        fetchProfiles();
+      }, []);
+    
             const [posts, setPosts] = useState([]);
            
           
@@ -31,11 +55,11 @@ import Feed from './Feed'
             <div className="container py-2">
                 <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-3">
-                        <ProfileLeft />
+                        <ProfileLeft profiles={profiles} />
                        
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-5">
-                        <CreatePost /> 
+                        <CreatePost profiles={profiles}/> 
                         <hr />
                         <Feed posts={posts}/>
                     </div>
