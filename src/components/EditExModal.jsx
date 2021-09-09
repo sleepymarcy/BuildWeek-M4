@@ -1,6 +1,7 @@
 import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import { Pencil } from "../assets/icons.jsx";
+import { format, parseISO } from "date-fns";
 
 const EditExModal = (props) => {
   const [show, setShow] = useState(false);
@@ -9,12 +10,12 @@ const EditExModal = (props) => {
   const handleShow = () => setShow(true);
 
   const [experience, setExperience] = useState({
-    role: "hah",
-    company: "",
-    startDate: "",
-    endDate: "",
-    description: "",
-    area: "",
+    role: props.selectedData.role,
+    company: props.selectedData.company,
+    startDate: props.selectedData.startDate,
+    endDate: props.selectedData.endDate,
+    description: props.selectedData.description,
+    area: props.selectedData.area,
   });
 
   const handleInput = (e, property) => {
@@ -22,13 +23,12 @@ const EditExModal = (props) => {
       ...experience,
       [property]: e.target.value,
     });
-    console.log(experience);
   };
 
   const handleSubmit = async () => {
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.dataToEdit._id}`,
+        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.selectedData._id}`,
         {
           method: "PUT",
           body: JSON.stringify(experience),
@@ -42,6 +42,7 @@ const EditExModal = (props) => {
 
       if (response.ok) {
         alert("Your experience was saved correctly!");
+        handleClose();
       } else {
         alert("something went wrong");
       }
@@ -54,7 +55,7 @@ const EditExModal = (props) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.dataToEdit._id}`,
+        `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.selectedData._id}`,
         {
           method: "DELETE",
           headers: {
@@ -66,7 +67,10 @@ const EditExModal = (props) => {
       );
 
       if (response.ok) {
-        alert("Your experience was deleted correctly!" + props.dataToEdit._id);
+        alert(
+          "Your experience was deleted correctly!" + props.selectedData._id
+        );
+        handleClose();
       } else {
         alert("something went wrong");
       }
@@ -104,6 +108,7 @@ const EditExModal = (props) => {
                     <Form.Control
                       className="bg-light"
                       type="text"
+                      value={experience.role}
                       placeholder="Ex: Retail Sales Manager"
                       onChange={(e) => handleInput(e, "role")}
                     />
@@ -115,6 +120,7 @@ const EditExModal = (props) => {
                     <Form.Control
                       className="bg-light"
                       type="text"
+                      value={experience.company}
                       onChange={(e) => handleInput(e, "company")}
                     />
                   </Form.Group>
@@ -122,9 +128,13 @@ const EditExModal = (props) => {
                     <Form.Label className="mb-0">
                       <small>Start date</small>
                     </Form.Label>
+
                     <Form.Control
-                      className="bg-light"
-                      type="text"
+                      type="date"
+                      value={format(
+                        parseISO(experience.startDate),
+                        "yyyy-MM-dd"
+                      )}
                       onChange={(e) => handleInput(e, "startDate")}
                     />
                   </Form.Group>
@@ -133,8 +143,8 @@ const EditExModal = (props) => {
                       <small>End date</small>
                     </Form.Label>
                     <Form.Control
-                      className="bg-light"
-                      type="text"
+                      type="date"
+                      value={format(parseISO(experience.endDate), "yyyy-MM-dd")}
                       onChange={(e) => handleInput(e, "endDate")}
                     />
                   </Form.Group>
@@ -145,6 +155,7 @@ const EditExModal = (props) => {
                     <Form.Control
                       as="textarea"
                       rows={3}
+                      value={experience.description}
                       onChange={(e) => handleInput(e, "description")}
                     />
                   </Form.Group>
@@ -155,6 +166,7 @@ const EditExModal = (props) => {
                     <Form.Control
                       className="bg-light"
                       type="text"
+                      value={experience.area}
                       onChange={(e) => handleInput(e, "area")}
                     />
                   </Form.Group>
