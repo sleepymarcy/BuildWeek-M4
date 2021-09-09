@@ -5,11 +5,16 @@ import Profile from "./components/Profile.jsx";
 import AlsoViewed from "./components/AlsoViewed.jsx";
 import Experience from "./components/Experience.jsx";
 import { Container, Row, Col } from "react-bootstrap";
+import ProfileLeft from "./components/ProfileLeft";
+import Home from './components/Home.jsx'
 
 function App() {
   return (
     <div className="main">
+
       <MyNav />
+     
+       
       <Container>
         <Row>
           <Col aria-modal={8}>
@@ -21,6 +26,7 @@ function App() {
           </Col>
         </Row>
       </Container>
+      <Home />
     </div>
   );
 }
