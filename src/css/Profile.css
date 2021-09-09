@@ -63,6 +63,9 @@ button {
 }
 .card .card-pic .rounded-circle {
   border: 2px solid #fff;
+  margin-left: 20px;
+  margin: -70px;
+  margin-inline: auto;
 }
 .card .card-user-details p {
   line-height: 1;

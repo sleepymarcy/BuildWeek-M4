@@ -22,7 +22,7 @@ const ProfileLeft = ({profiles}) => {
         </div>
         <div className="card-body text-center pt-1">
           <h6 className="card-title font-weight-bold dark mt-4">
-            <a href="#" className="profile">
+            <a href="#" className="profile text-dark">
               {profiles.name +" " + profiles.surname}
             </a>
           </h6>

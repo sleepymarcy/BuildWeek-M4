@@ -65,7 +65,7 @@ const [show, setShow] = useState(false);
         <Button
           variant="outline"
           onClick={handleShow}
-          className="ml-3 text-center bg-light border-dark"
+          className="text-center bg-light border-dark"
           size="lg"
         >
           <small> start post</small> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;

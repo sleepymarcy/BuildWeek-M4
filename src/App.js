@@ -13,7 +13,7 @@ function App() {
     <div className="main">
 
       <MyNav />
-      {/* <Home /> */}
+     
        
       <Container>
         <Row>
@@ -27,6 +27,7 @@ function App() {
           
         </Row>
       </Container>
+      <Home />
     </div>
   );
 }

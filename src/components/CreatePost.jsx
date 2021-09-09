@@ -11,7 +11,7 @@ const CreatePost = ({profiles}) => {
       <div id="create-post" className="card">
         <div className="card-body">
           <div className="card-title d-flex my-2">
-            <div className="card-pic mt-1 ml-5">
+            <div className="card-pic mt-1 mx-1">
         
               <img
                 className="rounded-circle"
