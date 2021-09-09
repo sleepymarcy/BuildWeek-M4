@@ -1,6 +1,4 @@
-import { Dropdown, Modal } from 'react-bootstrap'
 import '../css/Nav.css'
-import { useState } from 'react';
 
 const Linked = () => {
     return (
@@ -50,62 +48,14 @@ const Bicon = () => {
     )
 }
 
-const User = () => {
-    return (
-        <div className='dropdown-wrapper'>
-            <Dropdown type='button' className='link-dropdown line' variant='none'>
-                <img className='img-dropdown' src="https://media-exp1.licdn.com/dms/image/C4D03AQHnI5P4nAH2DQ/profile-displayphoto-shrink_100_100/0/1611150787255?e=1636588800&amp;v=beta&amp;t=S943kSLOPvHQpv9PFnfXenrkvXET6esDDcKPKLSScF0" alt="Martyna Sowińska" />
-                <Dropdown.Toggle variant='none' className='text-dropdown toggle-dropdown'>Me</Dropdown.Toggle>
-                <Dropdown.Menu>
-                    <Dropdown.Divider />
-                    <Dropdown.Item className='main-dropdown' href="#action/1">Account</Dropdown.Item>
-                    <Dropdown.Item className='secondary-dropdown' href="#action/2">Settings & Privacy</Dropdown.Item>
-                    <Dropdown.Item className='secondary-dropdown' href="#action/3">Help</Dropdown.Item>
-                    <Dropdown.Item className='secondary-dropdown' href="#action/4">Language</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item className='main-dropdown' href="#action/5">Manage</Dropdown.Item>
-                    <Dropdown.Item className='secondary-dropdown' href="#action/6">Post & Activity</Dropdown.Item>
-                    <Dropdown.Item className='secondary-dropdown' href="#action/7">Job Posting Account</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item className='secondary-dropdown' href="#action/8">Sign Out</Dropdown.Item>
-                </Dropdown.Menu >
-            </Dropdown>
-        </div>
-    )
-}
-
 const Wicon = () => {
 
     return (
-        <div className='dropdown-wrapper'>
-            <Dropdown type='button' className='link-dropdown' variant='none'>
-                <svg height="24" width="24">
-                    <path fill='CurrentColor' d="M10 10h4v4h-4v-4zm0 11h4v-4h-4v4zm-7-7h4v-4H3v4zm0 7h4v-4H3v4zM3 7h4V3H3v4zm14 7h4v-4h-4v4zm0-11v4h4V3h-4zm-7 4h4V3h-4v4zm7 14h4v-4h-4v4z"></path>
-                </svg>
-               <Example />
-            </Dropdown>
-        </div>
+        <svg height="24" width="24">
+            <path fill='CurrentColor' d="M10 10h4v4h-4v-4zm0 11h4v-4h-4v4zm-7-7h4v-4H3v4zm0 7h4v-4H3v4zM3 7h4V3H3v4zm14 7h4v-4h-4v4zm0-11v4h4V3h-4zm-7 4h4V3h-4v4zm7 14h4v-4h-4v4z"></path>
+        </svg>
+
     )
-}
-
-function Example() {
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    return (
-        <>
-            <Dropdown.Toggle variant='none' className='text-dropdown toggle-dropdown' onClick={handleShow}>Work</Dropdown.Toggle>
-
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-            </Modal>
-        </>
-    );
 }
 
 
@@ -126,4 +76,4 @@ const Pencil = () => {
 }
 
 
-export { Linked, Hicon, Nicon, Jicon, Micon, Bicon, User, Wicon, Picon, Pencil }
+export { Linked, Hicon, Nicon, Jicon, Micon, Bicon, Wicon, Picon, Pencil }

@@ -114,14 +114,71 @@
     color: #666666;
 }
 
-.work-modal {
-    position: fixed;
-    margin: auto;
-    width: 320px;
-    height: 100%;
-    right: -320px;
-    -webkit-transform: translate3d(0%, 0, 0);
-        -ms-transform: translate3d(0%, 0, 0);
-         -o-transform: translate3d(0%, 0, 0);
-            transform: translate3d(0%, 0, 0);
+
+.MuiDrawer-paper {
+    width: 380px;
+    margin-top: 52px;
+    border-radius: 10px;
+    display: flex;
+}
+
+.work-content {
+    display: block;
+    overflow: auto;
+    min-height: 5.6rem;
+    margin-top: 48px;
+    padding: 16px 24px 32px 24px;
+}
+
+.GrClose {
+    width: 24px;
+    height: 24px;
+    fill: #666666;
+}
+
+.work-button {
+    border: 0;
+    background-color: white;
+    float: right;
+}
+
+.work-head {
+    padding: 15px 15px 0 0;
+    float: right;
+}
+
+.h5, h5 {
+    font-size: 1em;
+}
+
+.work-title {
+    padding: 0 24px;
+}
+
+.work-list {
+    font-weight: 500;
+    font-size: 0.9rem !important;
+    margin-top: 5px;
+}
+    
+.work-list-sec:hover {
+    text-decoration: underline #0a66c2 !important;
+}
+
+.icon-list {
+    vertical-align: middle;
+    text-align: left;
+}
+
+.last {
+    padding: 4px 24px;
+}
+
+ul {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+small {
+    color: #666666;
 }
