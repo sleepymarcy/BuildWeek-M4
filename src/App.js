@@ -6,7 +6,9 @@ import AlsoViewed from "./components/AlsoViewed.jsx";
 import Experience from './components/Experience.jsx'
 import { Container, Row, Col } from "react-bootstrap";
 
+
 function App() {
+
   return (
     <div className="main">
       <MyNav />
