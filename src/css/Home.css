@@ -44,7 +44,12 @@ button {
   border: none;
   outline: none;
 }
-
+.button-post{
+margin-left:20px;
+}
+.icons-post{
+  font-size:x-large;
+}
 .cards-profiles{
   border: none;
   margin-top: none;

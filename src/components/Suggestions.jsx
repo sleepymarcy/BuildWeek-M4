@@ -4,7 +4,7 @@ import {Button} from 'react-bootstrap'
 import puffer1 from '../assets/puffer1.png'
 import '../css/Home.css'
 import {BiRightArrowAlt} from 'react-icons/bi'
-const Suggestions = () => {
+const Suggestions = (props) => {
     return (
         <div className="card py-3 px-3 mb-3">
             <div className="card-title">
@@ -24,13 +24,13 @@ const Suggestions = () => {
             <a href="#">
               <li className="mt-3">
                 <div>
-                  <img src={puffer1} className="rounded-circle" />
+                  <img src={props.posts[0].user.image} className="rounded-circle" />
                 </div>
                 <div>
                   <h6>
-                 fullname
+               {props.posts[0].username}
                   </h6>
-                  <p>bio</p>
+                  <p>{props.posts[0].user.bio}</p>
                   <Button >+ Connect</Button>
                 </div>
               </li>

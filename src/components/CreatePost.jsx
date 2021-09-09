@@ -1,15 +1,18 @@
 import React from "react";
 import puffer1 from "../assets/puffer1.png";
 import "../css/Home.css";
+import Home from "./Home";
 
 import PostModal from "./PostModal";
-class CreatePost extends React.Component {
-  render() {
+const CreatePost = () => {
+
+
     return (
       <div id="create-post" className="card">
         <div className="card-body">
           <div className="card-title d-flex my-2">
             <div className="card-pic mt-1 ml-5">
+        
               <img
                 className="rounded-circle"
                 src={puffer1}
@@ -45,7 +48,7 @@ class CreatePost extends React.Component {
         </div>
       </div>
     );
-  }
+  
 }
 
 export default CreatePost;
