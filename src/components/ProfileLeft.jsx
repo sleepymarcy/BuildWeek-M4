@@ -2,7 +2,30 @@ import "../css/Home.css";
 import puffer1 from "../assets/puffer1.png";
 import { TiLockClosed } from "react-icons/ti";
 import { IoIosBookmark } from "react-icons/io";
+import { useState, useEffect } from "react";
 const ProfileLeft = () => {
+  const [profiles, setProfiles] = useState([]);
+ 
+
+  const fetchProfiles = async () => {
+    let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/me",
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM1ZDgxYTdiZTZjMTAwMTVmOWRiOWEiLCJpYXQiOjE2MzA5MTg2ODMsImV4cCI6MTYzMjEyODI4M30.z1FglsnilVoFG29tlQ4cAsplJJ3_M45A3BGoYeYrQl8",
+        },
+      }
+    );
+    let profiles = await response.json();
+    setProfiles(profiles);
+  };
+  console.log(profiles);
+
+  useEffect(() => {
+    fetchProfiles();
+  }, []);
+
   return (
     <>
       <div id="profile-left" className="card mb-3">
@@ -12,7 +35,7 @@ const ProfileLeft = () => {
         <div className="card-pic mt-1 mn-5 text-center">
           <img
             className="rounded-circle"
-            src={puffer1}
+            src={profiles.image}
             width={75}
             height={75}
             alt=""
@@ -21,12 +44,13 @@ const ProfileLeft = () => {
         <div className="card-body text-center pt-1">
           <h6 className="card-title font-weight-bold dark mt-4">
             <a href="#" className="dark">
-              vijay kumar vemana
+              {profiles.name +" " + profiles.surname}
             </a>
           </h6>
           <p className="card-text text-muted">
-            <small>strive school</small>
+            <small>{profiles.title}</small>
           </p>
+         
         </div>
 
         <div className="list-group list-group-flush">

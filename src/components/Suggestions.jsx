@@ -24,13 +24,13 @@ const Suggestions = (props) => {
             <a href="#">
               <li className="mt-3">
                 <div>
-                  <img src={props.posts[0].user.image} className="rounded-circle" />
+                  <img src={((props.posts[0]||{}).user||{}).image} className="rounded-circle" />
                 </div>
                 <div>
                   <h6>
-               {props.posts[0].username}
+               {(props.posts[0]||{}).username}
                   </h6>
-                  <p>{props.posts[0].user.bio}</p>
+                  <p>{((props.posts[0]||{}).user||{}).bio}</p> 
                   <Button >+ Connect</Button>
                 </div>
               </li>
