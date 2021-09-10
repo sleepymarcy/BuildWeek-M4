@@ -24,7 +24,6 @@ function App() {
           </Col>
         </Row>
       </Container>
-      <Home />
     </div>
   );
 }
