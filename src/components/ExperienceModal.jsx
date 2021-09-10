@@ -50,7 +50,7 @@ const ExperienceModal = (props) => {
           area: "",
         });
       } else {
-        alert("something went wrong");
+        alert("Something went wrong");
       }
     } catch (error) {
       console.log(error);

@@ -1,12 +1,9 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import MyNav from "./components/MyNav.jsx";
 import Profile from "./components/Profile.jsx";
 import AlsoViewed from "./components/AlsoViewed.jsx";
 import Experience from "./components/Experience.jsx";
 import { Container, Row, Col } from "react-bootstrap";
-import ProfileLeft from "./components/ProfileLeft";
-import Home from './components/Home.jsx'
 
 
 function App() {
