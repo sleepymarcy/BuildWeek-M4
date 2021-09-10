@@ -76,14 +76,14 @@ class Work extends React.Component {
                         <Card>
                             <Card.Title className='p-4 mb-0'>Visit More LinkedIn Products</Card.Title>
                             <ListGroup variant="flush" className='icon-list'>
-                                <div>
+                                <div className='ml-4 mt-2'>
                                     <small className='mb-1 pr-2'>Learning</small>
                                     <small className='mb-1 pr-2'>Insights</small>
                                     <small className='mb-1 pr-2'>Post a Job</small>
                                     <small className='mb-1 pr-2'>Advertise</small>
                                 </div>
 
-                                <div>
+                                <div className='ml-4 mb-2'>
                                     <small className='mb-1 pr-2'>Find Leads</small>
                                     <small className='mb-1 pr-2'>Groups</small>
                                     <small className='mb-1 pr-2'>ProFinder</small>
