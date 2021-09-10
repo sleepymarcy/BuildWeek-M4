@@ -4,9 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from './components/Home.jsx'
+import MyNav from './components/MyNav.jsx'
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <MyNav />
+      <Switch>
+        <Route exact path='/' component={App} />
+        <Route path='/home' component={Home} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
