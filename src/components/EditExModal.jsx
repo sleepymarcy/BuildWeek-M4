@@ -33,7 +33,8 @@ const EditExModal = (props) => {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       let response = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences/${props.selectedData._id}`,
