@@ -13,10 +13,6 @@ function App() {
 
   return (
     <div className="main">
-
-      <MyNav />
-     
-       
       <Container>
         <Row>
           <Col aria-modal={8}>
