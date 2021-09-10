@@ -3,6 +3,7 @@ import CreatePost from "./CreatePost";
 import Suggestions from "./Suggestions";
 import { useState, useEffect } from "react";
 import Feed from "./Feed";
+import Post from './Post'
 
 
 const Home = () => {
@@ -28,6 +29,9 @@ const Home = () => {
   }, []);
 
   const [posts, setPosts] = useState([]);
+  const [RequestGetAgain, setRequestGetAgain] = useState(false)
+
+  const handleRefetch = () => setRequestGetAgain(!RequestGetAgain)
 
   const fetchposts = async () => {
     let response = await fetch(
@@ -54,8 +58,9 @@ const Home = () => {
           <ProfileLeft profiles={profiles} />
         </div>
         <div className="col-sm-12 col-md-12 col-lg-5">
-          <CreatePost profiles={profiles} />
+          <CreatePost profiles={profiles} Toggle={() => handleRefetch(RequestGetAgain)} />
           <hr />
+          <Post />
           <Feed posts={posts} />
         </div>
         <div className="col-sm-12 col-md-12 col-lg-4">
