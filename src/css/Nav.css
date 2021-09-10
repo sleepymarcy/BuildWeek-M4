@@ -66,6 +66,17 @@
     width: 24px;
 }
 
+.user-button-wrapper {
+    text-align: center;
+    
+}
+
+.user-button {
+    font-size: 13px;
+    border-radius: 20px;
+    padding: 2px 35px !important;
+}
+
 .toggle-dropdown {
     padding: 0 !important;
 }

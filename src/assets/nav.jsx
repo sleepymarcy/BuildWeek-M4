@@ -1,9 +1,10 @@
-import { Dropdown, Card, ListGroup } from 'react-bootstrap'
+import { Dropdown, Card, ListGroup, Button } from 'react-bootstrap'
 import '../css/Nav.css'
 import { Wicon } from './icons.jsx'
 import React from 'react';
 import WorkDrawer from './WorkDrawer.jsx';
 import { GrClose } from 'react-icons/gr'
+import { Link } from 'react-router-dom';
 
 const User = () => {
     return (
@@ -12,6 +13,9 @@ const User = () => {
                 <img className='img-dropdown' src="https://media-exp1.licdn.com/dms/image/C4D03AQHnI5P4nAH2DQ/profile-displayphoto-shrink_100_100/0/1611150787255?e=1636588800&amp;v=beta&amp;t=S943kSLOPvHQpv9PFnfXenrkvXET6esDDcKPKLSScF0" alt="Martyna Sowińska" />
                 <Dropdown.Toggle variant='none' className='text-dropdown toggle-dropdown'>Me</Dropdown.Toggle>
                 <Dropdown.Menu>
+                    <div className='user-button-wrapper'>
+                        <Link to='/' className='user-button btn btn-outline-primary'>View Profile</Link>
+                    </div>
                     <Dropdown.Divider />
                     <Dropdown.Item className='main-dropdown' href="#action/1">Account</Dropdown.Item>
                     <Dropdown.Item className='secondary-dropdown' href="#action/2">Settings & Privacy</Dropdown.Item>
