@@ -12,7 +12,7 @@ import { RiBuilding2Fill } from "react-icons/ri";
 import { TiWorld } from "react-icons/ti";
 
 
-const PostModal = () => {
+const PostModal = ({profiles}) => {
 
 // {sjhdfkljalfk}
 const [show, setShow] = useState(false);
@@ -81,13 +81,13 @@ const [show, setShow] = useState(false);
           <div className="card-pic d-flex ">
             <img
               className="rounded-circle"
-              src={puffer1}
-              width={75}
-              height={75}
+              src={profiles.image}
+              width={50}
+              height={50}
               alt=""
             />
             <div>
-              <h6>vijay Kumar vemana</h6>
+              <h6>{profiles.name+" "+profiles.surname}</h6>
               <Button variant="light border-dark" size="sm">
                 <TiWorld />
                 Anyone
@@ -96,12 +96,11 @@ const [show, setShow] = useState(false);
             </div>
           </div>
           <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3">
+          <Form.Group className="mb-3 mt-3">
                    
                     <Form.Control
-                      className="bg-light"
+                      className="border-white out-line-0"
                       type="text"
-                     
                       onChange={(e) => handleInput(e)}
                     />
                   </Form.Group>
@@ -121,7 +120,7 @@ const [show, setShow] = useState(false);
           {/* <Button variant="outline-dark" className="border-white">
             Anyone
           </Button> */}
-          <Button variant="primary" type="submit" onClick={handleClose}>
+          <Button variant="primary" type="submit" >
             Post
           </Button>
         </Modal.Footer>

@@ -6,9 +6,10 @@ import {FaRegCommentDots} from 'react-icons/fa'
 import {IoIosShareAlt} from 'react-icons/io'
 import {RiSendPlaneFill} from 'react-icons/ri'
 const Feed = (props) => {
+
     // console.log(posts[0]['user']['bi
     return(
-      
+    
   props.posts.map(post=> 
     <div key = {post._id}className="card cards-profiles mb-3 px-3 viewed">
       <ul >
@@ -17,11 +18,11 @@ const Feed = (props) => {
             <div>
               <img src={((post||{}).user ||{}).image} className="rounded-circle" />
             </div>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between mx-2">
              <div> <h6>{post.username}</h6>
               <p>{((post||{}).user ||{}).bio}</p></div>
               <div>
-              <Button className="button-post" >+ Connect</Button>
+              <Button className=" bg-light text-dark outline-dark border-dark">+ Connect</Button>
               </div>
             </div>
           </li>

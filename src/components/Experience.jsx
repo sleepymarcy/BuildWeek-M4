@@ -8,7 +8,11 @@ import { format, parseISO, formatDistance } from "date-fns";
 
 const Experience = () => {
   const [experiences, setExperiences] = useState([]);
+  const [RequestGetAgain, setRequestGetAgain] = useState(false);
 
+  const handleRefetch = () => setRequestGetAgain(!RequestGetAgain);
+  // create this state RequestGetAgain => another that could be toggled true => false; false=>true
+  //This is were the GET happens
   const fetchExperiences = async () => {
     let response = await fetch(
       "https://striveschool-api.herokuapp.com/api/profile/6135d81a7be6c10015f9db9a/experiences",
@@ -27,13 +31,18 @@ const Experience = () => {
     fetchExperiences();
   }, []);
 
+  useEffect(() => {
+    fetchExperiences();
+  }, [RequestGetAgain]);
+
   return (
     <Card as="ul" className="list">
       <Card.Body className="card-wrapper">
         <Card.Header className="experience">
           <Card.Title className="title">Experience</Card.Title>
           <Card.Link className="plus">
-            <AddExModal />
+            {/* this is were the POST happens, could pass the RequestGetAgain and setRequestGetAgain state */}
+            <AddExModal Toggle={() => handleRefetch(RequestGetAgain)} />
           </Card.Link>
         </Card.Header>
         <ul>
@@ -61,7 +70,11 @@ const Experience = () => {
                         </div>
                       </a>
                       <Button className="p-0 ex-btn" variant="none">
-                        <EditExModal selectedData={e} />
+                        {/* this is were the PUT happens */}
+                        <EditExModal
+                          selectedData={e}
+                          Toggle={() => handleRefetch(RequestGetAgain)}
+                        />
                       </Button>
                     </div>
 
