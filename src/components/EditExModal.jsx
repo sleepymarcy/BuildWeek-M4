@@ -49,9 +49,11 @@ const EditExModal = (props) => {
       );
 
       if (response.ok) {
+        alert("changed");
         handleClose();
+        props.Toggle();
       } else {
-        setIsError(true);
+        alert("something went wrong");
       }
     } catch (error) {
       console.log(error);
@@ -78,6 +80,7 @@ const EditExModal = (props) => {
           "Your experience was deleted correctly!" + props.selectedData._id
         );
         handleClose();
+        props.Toggle();
       } else {
         alert("something went wrong");
       }

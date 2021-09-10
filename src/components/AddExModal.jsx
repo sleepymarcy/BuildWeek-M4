@@ -2,7 +2,7 @@ import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import { Picon } from "../assets/icons.jsx";
 
-const AddExModal = () => {
+const AddExModal = (props) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -42,6 +42,9 @@ const AddExModal = () => {
       if (response.ok) {
         alert("Your experience was saved correctly!");
         handleClose();
+        props.Toggle();
+        console.log(props.Toggle);
+
         setExperience({
           role: "",
           company: "",
@@ -50,6 +53,8 @@ const AddExModal = () => {
           description: "",
           area: "",
         });
+        // call the setRequestGetAgain to toggle the !RequestGetAgain
+        // After the POST happens, you want to GET the new added experience and display it
       } else {
         alert("something went wrong");
       }
