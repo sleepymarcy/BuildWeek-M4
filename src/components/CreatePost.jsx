@@ -2,7 +2,7 @@ import React from "react";
 import "../css/Home.css";
 import PostModal from "./PostModal";
 
-const CreatePost = ({ profiles }) => {
+const CreatePost = ({ profiles, Toggle }) => {
   return (
     <div id="create-post" className="card">
       <div className="card-body">
@@ -16,7 +16,7 @@ const CreatePost = ({ profiles }) => {
               alt=""
             />
           </div>
-          <PostModal profiles= {profiles} />
+          <PostModal profiles= {profiles} Toggle={Toggle}/>
         </div>
         <div className="row">
           <div className="card-button  mb-1  d-flex justify-content-between align-items-center">

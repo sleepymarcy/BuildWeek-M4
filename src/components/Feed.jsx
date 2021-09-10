@@ -5,6 +5,7 @@ import {AiOutlineLike} from 'react-icons/ai'
 import {FaRegCommentDots} from 'react-icons/fa'
 import {IoIosShareAlt} from 'react-icons/io'
 import {RiSendPlaneFill} from 'react-icons/ri'
+import { BsThreeDots } from 'react-icons/bs'
 const Feed = (props) => {
 
     // console.log(posts[0]['user']['bi
@@ -24,6 +25,7 @@ const Feed = (props) => {
               <div>
               <Button className=" bg-light text-dark outline-dark border-dark">+ Connect</Button>
               </div>
+              <div className="mx-1"> <BsThreeDots /></div>
             </div>
           </li>
         

@@ -10,10 +10,9 @@ import { FaSuitcase } from "react-icons/fa";
 import { GiPentagramRose } from "react-icons/gi";
 import { RiBuilding2Fill } from "react-icons/ri";
 import { TiWorld } from "react-icons/ti";
-import { propTypes } from "react-bootstrap/esm/Image";
 
 
-const PostModal = ({profiles, Toggle}) => {
+const PostModal = ({profiles}) => {
 
 // {sjhdfkljalfk}
 const [show, setShow] = useState(false);
@@ -49,7 +48,7 @@ const [show, setShow] = useState(false);
 
       if (response.ok) {
         alert("Your post was saved correctly!");
-        Toggle()
+
         setPost({
         text: "",
         });
